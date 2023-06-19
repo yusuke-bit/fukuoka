@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Charm of Fukuoka</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <script src="https://kit.fontawesome.com/9138cacf02.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+      <div>
+        <div class="hamburger-menu">
+          <input type="checkbox" id="menu-btn-check">
+          <label for="menu-btn-check" class="menu-btn"><span></span></label>
+          <div class="menu-content">
+            <div class="hum">
+                <li><%= link_to "トップページ", posts_path, class:"atext" %></li>
+                <li><%= link_to "スポット", spot_path, class:"atext" %></li>
+                <li><%= link_to "グルメ", food_path, class:"atext" %></li>
+                <li><%= link_to "診断", perfumes_path, class:"atext"%></li>    
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <div class="logout">
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"atext" %></li>  
+                </div>     
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <header>
+      <div class="header-list">
+        <ul>
+        <% if controller.action_name != "index" %>
+          <%= link_to posts_path do %>
+            <div class="back">
+            </div>
+          <%end%>
+        <%end%>
+
+        <% if user_signed_in? %>
+          <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+          <li>  <%= link_to "新規投稿", new_post_path %></li>
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </div>
+
+      </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+
+      <p class="Copyright"> © 2023 Charm of Fukuoka Inc.</p>
+      
+    </footer>
+  </body>
+</html>
+
+

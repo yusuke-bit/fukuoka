@@ -1,0 +1,87 @@
+<%= stylesheet_link_tag 'show', :media => "all" %>
+
+<div class="show">
+<h1>投稿詳細</h1>
+  <p><%= image_tag @post.image_url, size: "250x200" %></p>
+  <p><%= @post.user.email %></p>
+  <p><%= @post.name %></p>
+  <p><%= @post.about %></p>
+  <p><%= @post.created_at %></p>
+
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+    <%= link_to "編集", edit_post_path %>
+    <%= link_to "削除", post_path, method: :delete %>
+  <% end %>
+
+  <h3>いいね!</h3>
+  <% if user_signed_in? %>
+    <% if current_user.already_liked?(@post) %>
+      <%= link_to post_like_path(@post), method: :delete do %>
+        <i class="fas fa-heart"></i><%= @post.likes.count %>
+      <% end %>
+    <% else %>
+      <%= link_to post_likes_path(@post), method: :post do %>
+        <i class="far fa-heart"></i><%= @post.likes.count %> 
+      <% end %>
+    <% end %>
+  <% else %>
+    <i class="far fa-heart"></i><%= @post.likes.count %>
+  <% end %>
+
+  <% @post.liked_users.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+
+  <h3>コメント一覧</h3>
+    <% @comments.each do |c| %>
+      <div>
+        <%= c.user.name unless c.user.blank? %>
+        <%= c.content %>
+      </div>
+    <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% @post.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+  <% end %>
+
+  <%= link_to "戻る", posts_path %>
+</div>
+
+<div id='map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 100%;
+}
+</style>
+
+<!-- js部分 -->
+<script>
+//初期マップの設定
+let map
+let marker
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+    zoom: 15,
+  });
+
+   marker = new google.maps.Marker({
+    position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLsAxvKwJtKYkFd6UH6YhIlnqYG8pStIc&callback=initMap" async defer></script>

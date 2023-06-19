@@ -1,0 +1,166 @@
+.title {
+  width: 1000x;
+  font-size: 80px;
+  font-family: serif;
+  margin: 30px auto;
+  padding-bottom: 80px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 8px #333, -2px -2px 8px #333;
+}
+
+.image {
+  background-image: url(fukuoka.jpg);
+  height: 900px;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.image2 {
+  background-image: url(tensinohane.jpg);
+  height: 400px;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.iabout{
+  text-align: center;
+
+}
+
+.iab1{
+  margin-top: 150px;
+  margin-bottom: 50px;
+  padding-bottom: 45px;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 3em;
+  border-bottom: 3px solid #ffb061;
+}
+
+.iab2{
+  margin-top: 50px;
+  font-size: 1.5em;
+}
+
+.iab3{
+  font-size: 1.2em;
+  margin-top: 30px;
+  margin-bottom: 150px;
+}
+
+.isearch {
+  width: 1000px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.inew {
+  width: 1000px;
+  margin: 30px auto;
+  text-align: center;
+  text-decoration: none;
+  font-size: 3em;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.icontent-border {
+  border-top:1px solid #6f6f6f;
+  width: 100%;
+}
+
+.icontent{
+  margin: auto;
+}
+
+.main-box {
+  text-align: center;
+  flex-direction: column;
+  width: 350px;
+  height: 340px;
+  border-radius: 15.7px;
+  border: 1px solid #6f6f6f;
+  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.yusuke {
+  justify-content: space-between;
+  width: 1;
+  overflow: hidden;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.iimage{
+  height: 250px;
+  width: 350px;
+}
+
+.iimage:hover {
+  opacity: 0.7;
+  transform: scale(1.1, 1.1);
+  border-radius: 15px;
+}
+
+.youchan {
+  justify-content: space-between;
+}
+
+#page_top{
+  width: 90px;
+  height: 90px;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  opacity: 0.6;
+}
+
+#page_top a{
+  position: relative;
+  display: block;
+  width: 90px;
+  height: 90px;
+  text-decoration: none;
+}
+
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f102';
+  font-size: 50px;
+  color: #000;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -40px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+
+#page_top a::after{
+  // content: 'ページトップ';
+  font-size: 13px;
+  color: #fff;
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  color: #000;
+}
