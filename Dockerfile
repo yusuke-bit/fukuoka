@@ -57,7 +57,7 @@ RUN chmod +x bin/* && \
     sed -i 's/ruby\.exe$/ruby/' bin/*
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
+RUN RAILS_MASTER_KEY='c50d48de29e28054a3d094ef5d19a6d4'
 
 
 # Final stage for app image
